@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | Muse</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("navbar.ejs") %>
+
+    <main>
+      <section class="user-details">
+        <div class="profile-photo">
+          <img src="/images/user5.jpg" alt="Default User" />
+        </div>
+        <div class="profile-info">
+          <h2 class="username-profile"><%= username %></h2>
+          <p>
+            <strong>Followers:</strong> 00 &nbsp; <strong>Following:</strong> 00
+          </p>
+
+          <button class="follow-btn">Follow</button>
+          <button class="message-btn">Message</button>
+        </div>
+      </section>
+      <section class="user-gallery">
+        <% if (userImages.length > 0) { %> <% userImages.forEach((image) => { %>
+        <div class="user-photo">
+          <img
+            src="/uploads/<%= image.image_path %>"
+            alt="Photo by <%= username %>"
+          />
+          <div class="grid-photo-info">
+            <div class="profile-like-action">
+              <span class="profile-like-count"
+                ><%= image.like_count %> likes</span
+              >
+              <button
+                class="like-btn <%= image.liked_by_user ? 'liked' : '' %>"
+                data-image-id="<%= image.image_id %>"
+              >
+                ♡
+              </button>
+            </div>
+            <p class="profile-caption"><%= image.caption %></p>
+            <p class="profile-date-posted">
+              <%= new Date(image.created_at).getDate() %> <%= new
+              Date(image.created_at).toLocaleString('default', { month: 'short'
+              }) %> <%= new Date(image.created_at).getFullYear() %>
+            </p>
+          </div>
+        </div>
+        <% }); %> <% } else { %>
+        <div class="no-posts-container">
+          <p class="no-posts-message">No posts yet, upload your muse?</p>
+        </div>
+        <% } %>
+      </section>
+    </main>
+
+    <%- include("footer.ejs") %>
+
+    <script src="/js/index.js"></script>
+  </body>
+</html>

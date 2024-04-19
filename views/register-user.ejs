@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUSE | Register</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="landingContainers">
+      <div class="landingContainer1" id="landingContainer1">
+        <div class="logo">
+          <a href="/">
+            <h1>MUSE</h1>
+          </a>
+        </div>
+        <p>Welcome to Muse!</p>
+        <form action="/register" method="POST">
+          <input
+            type="text"
+            name="fullname"
+            placeholder="Full Name"
+            required
+          /><br />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          /><br />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          /><br />
+          <button type="submit" class="registerBtn">Register</button>
+          <p></p>
+
+          <p>
+            Already a member? <a href="/login" class="loginText">Login here</a>
+          </p>
+        </form>
+      </div>
+
+      <div class="flash-messages">
+        <% if (messages.length > 0) { %> <% messages.forEach(function(message) {
+        %>
+        <p><%= message %></p>
+        <% }); %> <% } %>
+      </div>
+
+      <div class="landingContainer2">
+        <img src="/images/landing3.png" alt="landing page image" />
+      </div>
+    </div>
+  </body>
+</html>

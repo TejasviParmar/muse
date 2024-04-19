@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MUSE | Login</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="landingContainers">
+      <div class="landingContainer1">
+        <div class="logo">
+          <a href="/">
+            <h1>MUSE</h1>
+          </a>
+        </div>
+        <p>Login to Muse!</p>
+
+        <form action="/login" method="POST">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          /><br />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          /><br />
+
+          <button type="submit" class="loginBtn">Login</button>
+          <p>
+            Not a member yet?
+            <a href="/register" class="registerText">Register</a>
+          </p>
+        </form>
+      </div>
+      <div class="flash-messages">
+        <% if (messages.error) { %> <% messages.error.forEach(function(message)
+        { %>
+        <p class="flash-message"><%= message %></p>
+        <% }) %> <% } %>
+      </div>
+      <p></p>
+      <div class="landingContainer2">
+        <img src="/images/landing3.png" alt="landing page image" />
+      </div>
+    </div>
+  </body>
+</html>

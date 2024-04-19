@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload | Muse</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("navbar.ejs") %>
+
+    <main class="upload-body">
+      <div class="upload-container">
+        <h1>Upload an Image</h1>
+        <form
+          action="/upload"
+          method="POST"
+          enctype="multipart/form-data"
+          class="upload-form"
+        >
+          <div class="form-group">
+            <label for="image">Select image:</label>
+            <input type="file" id="image" name="image" accept="image/*" />
+          </div>
+          <div class="form-group">
+            <label for="caption">Caption:</label>
+            <input type="text" id="caption" name="caption" maxlength="255" />
+          </div>
+          <button type="submit" class="upload-btn">Upload</button>
+        </form>
+      </div>
+    </main>
+
+    <%- include("footer.ejs") %>
+  </body>
+</html>

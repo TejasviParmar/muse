@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Muse</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("navbar.ejs") %>
+    <h2 class="dashboard-title">Your Dashboard</h2>
+    <main>
+      <section class="gallery">
+        <% images.forEach((image) => { %>
+        <article class="photo-container">
+          <img
+            src="/uploads/<%= image.image_path %>"
+            alt="Photo by <%= image.username %>"
+          />
+          <div class="photo-info">
+            <div class="user-and-actions">
+              <a href="/profile/<%= image.username %>" class="username"
+                ><%= image.username %></a
+              >
+              <span class="like-count"><%= image.like_count %> likes</span>
+              <button
+                class="like-btn <%= image.liked_by_user ? 'liked' : '' %>"
+                data-image-id="<%= image.image_id %>"
+              >
+                ♡
+              </button>
+            </div>
+            <p class="caption"><%= image.caption %></p>
+            <p class="date-posted">
+              <%= new Date(image.created_at).getDate() %> <%= new
+              Date(image.created_at).toLocaleString('en', { month: 'short' }) %>
+              <%= new Date(image.created_at).getFullYear() %>
+            </p>
+          </div>
+        </article>
+        <% }); %>
+      </section>
+    </main>
+
+    <%- include("footer.ejs") %>
+
+    <script src="/js/index.js"></script>
+  </body>
+</html>
