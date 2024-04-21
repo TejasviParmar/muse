@@ -12,7 +12,7 @@
     <main>
       <section class="user-details">
         <div class="profile-photo">
-          <img src="/images/user5.jpg" alt="Default User" />
+          <img src="/images/defaultUserImage.jpg" alt="Default User" />
         </div>
         <div class="profile-info">
           <h2 class="username-profile"><%= username %></h2>
@@ -36,6 +36,7 @@
               <span class="profile-like-count"
                 ><%= image.like_count %> likes</span
               >
+
               <button
                 class="like-btn <%= image.liked_by_user ? 'liked' : '' %>"
                 data-image-id="<%= image.image_id %>"

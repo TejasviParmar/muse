@@ -80,4 +80,15 @@ async function register(req, res) {
   );
 }
 
-module.exports = { login, register };
+async function logout(req, res) {
+  res.clearCookie("connect.sid");
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session", err);
+      return res.status(500).send("Error logging out");
+    }
+    res.redirect("/login");
+  });
+}
+
+module.exports = { login, register, logout };
